@@ -2,7 +2,7 @@ body{
     padding: 0;
     background-color: #F1FAEE;
     color: #1D3557;
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'Open Sans', sans-serif;
 
 }
 
@@ -43,5 +43,5 @@ h3{
     background-color: #457B9D;
     color: #F1FAEE;
     font-size: 40px;
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
