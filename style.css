@@ -1,0 +1,47 @@
+body{
+    padding: 0;
+    background-color: #F1FAEE;
+    color: #1D3557;
+    font-family: 'Quicksand', sans-serif;
+
+}
+
+
+#siteTitle{
+    font-size: 75px;
+    padding: 10px;
+    background-color:#F1FAEE;
+    
+}
+.menu-text{
+    background-color: #F1FAEE;
+    width: 100%;
+}
+
+content{
+
+}
+
+#left{
+
+    height: 500px;
+}
+#middle{
+ 
+}
+
+h3{
+    line-height: 500px;
+    text-align: center;
+}
+#right{
+
+}
+#getStarted{
+    height: 100px;
+    width: 400px;
+    background-color: #457B9D;
+    color: #F1FAEE;
+    font-size: 40px;
+    font-family: 'Quicksand', sans-serif;
+}
