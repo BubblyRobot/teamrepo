@@ -4,7 +4,7 @@ var timer = 0;
     startTimer(length);
 
     //affirmation display
-    var themes = ["Desert", "Ocean", "Forest", "Mountain", "Sky"];
+    var themes = ["desert", "ocean", "forest", "mountain", "sky"];
     var affirmations = {
         "love": ["Placeholder for Affirmation"],
         "abundance": ["Money comes to me easily"],
@@ -121,7 +121,7 @@ var timer = 0;
 
     function getTheme() {
         var theme = localStorage.getItem('selectedTheme');
-        if (theme == undefined || themes.findIndex(theme) == -1) {
+        if (theme == undefined || themes.indexOf(theme) == -1) {
             theme = "Ocean";
         }
     }

@@ -1,13 +1,17 @@
-$("#start").click(function (){
-    storeSettings();
+$("#getStarted").click(function (){
+    localStorage.setItem("selectedTimeInSeconds", parseInt($("#time-selection").val()) * 60);
     window.location.replace("../../generated.html");
 });
 
-function storeSettings(){
-    localStorage.setItem("selectedTheme", $("#theme-selection").val());
-    localStorage.setItem("selectedTimeInSeconds", parseInt($("#time-selection").val()) * 60);
-    localStorage.setItem("selectedAffirmation", $("#affirmation-selection").val());
-}
+$("#theme-selection").click(function(event){
+    event.stopPropagation();
+    localStorage.setItem("selectedTheme", event.target.getAttribute('theme'));
+});
+
+$("#affirmation-selection").click(function(event){
+    event.stopPropagation();
+    localStorage.setItem("selectedAffirmation", event.target.getAttribute('affirmation'));
+});
 
 function loadLastSettingsOrDefault(){
     $("#theme-selection").val(localStorage.getItem("selectedTheme") || "Ocean");
