@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="no-js" lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/css/style.css">
 
-  <title>Introduction</title>
+  <title>Page 2</title>
 </head>
 
 <body>
@@ -27,23 +27,51 @@
 
     <div id="minutes">
 
-      <form action="/action_page.php">
-        <label for="quantity">How long would you like to meditate for?</label>
-        <input type="number" id="time-selection" name="quantity" min="1" max="10">
-      </form>
+      <label>
+        How long would you like to meditate for?
+        <input type="number" value="">
+      </label>
+
     </div>
 
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li>
+          <a id="theme-selection" href="#">Themes</a>
+          <ul class="menu">
+              <li><a theme="desert" href="#">Desert</a></li>
+              <li><a theme="ocean" href="#">Ocean</a></li>
+              <li><a theme="forest" href="#">Forest</a></li>
+              <li><a theme="mountain" href="#">Mountain</a></li>
+              <li><a theme="sky" href="#">Sky</a></li>
+          </ul>
+      </li>
+  
+      <li>
+        <a id="affirmation-selection" href="#">Read</a>
+        <ul class="menu">
+            <li><a affirmation="love" href="#">Love</a></li>
+            <li><a affirmation="abundance" href="#">Abundance</a></li>
+            <li><a affirmation="success" href="#">Success</a></li>
+            <li><a affirmation="health" href="#">Health</a></li>
+            <li><a affirmation="happiness" href="#">Happiness</a></li>
+        </ul>
+      </li>
 
+    </ul>
 
-    <div class="dropdown">
+    <!-- <div class="dropdown">
       <button id="Themes" class="dropbtn">Themes</button>
-      <div id="theme-selection" class="dropdown-content">
-        <a theme="desert" href="#">Desert</a>
+      <ul  id="theme-selection" class="dropdown-content dropdown menu" data-dropdown-menu > 
+        <li><a href="#">Themes</a>
+         <ul>    
+       <li></li> <a theme="desert" href="#">Desert</a>
         <a theme="ocean" href="#">Ocean</a>
         <a theme="forest" href="#">Forest</a>
         <a theme="mountain" href="#">Mountain</a>
         <a theme="sky" href="#">Sky</a>
-      </div>
+      </ul>
+      </li>
+    </ul>
     </div>
 
 
@@ -56,20 +84,15 @@
         <a affirmation="health" href="#">Health</a>
         <a affirmation="happiness" href="#">Happiness</a>
       </div>
-    </div>
+    </div> -->
 
 
     <div>
       <form action="">
-        <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+        <input type="checkbox" id="audio" name="audio" value="audio">
         <label for="Audio"> No Audio?</label>
         <br>
 
-    </div>
-
-
-    <div id="Go">
-      <button type="button" id="start">Go!</button>
     </div>
 
 
@@ -87,7 +110,13 @@
   <!-- Compressed JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js"
     integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
-  <script src="./assets/js/details_selection.js"></script>
+  <script>
+    (function () {
+        $(document).foundation();
+    })();
+</script>
+<script src="./assets/js/details_selection.js"></script>
+
 </body>
 
 </html>
