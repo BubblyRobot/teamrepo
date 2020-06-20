@@ -1,6 +1,6 @@
 $("#getStarted").click(function (){
     localStorage.setItem("selectedTimeInSeconds", parseInt($("#time-selection").val()) * 60);
-    window.location.replace("../../generated.html");
+    window.location.replace("/generated.html");
 });
 
 $("#theme-selection").click(function(event){
