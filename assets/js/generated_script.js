@@ -113,13 +113,7 @@ var timer = 0;
                 url: queryURL,
                 method: "GET"
             }).then(function (response) {
-                audioSource = response.previews["preview-lq-mp3"];
-                console.log(audioSource);
-                var audio = new Audio(audioSource);
-                var playPromise = audio.play();
-                playPromise.then(res=>{
-                    console.log("AUDIO SHOULD PLAY", res);
-                });
+                $("#audio").attr("src", response.previews["preview-lq-mp3"]);
             });
         })
     }
@@ -131,11 +125,10 @@ var timer = 0;
         x.play();
     }
     $(document).ready(function () {
-        $(document).on("click",body,function() {
-            //this will eventually be replaced by clicking the "Start" button
+        $(document).click(function () {
             playAudio();
         });
-    })
+    });
 
     function getImage() {
         var theme = getTheme();
