@@ -132,6 +132,7 @@ var timer = 0;
     }
     $(document).ready(function () {
         $(document).on("click",body,function() {
+            //this will eventually be replaced by clicking the "Start" button
             playAudio();
         });
     })
