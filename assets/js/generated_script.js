@@ -6,38 +6,46 @@ var timer = 0;
     //affirmation display
     var themes = ["desert", "ocean", "forest", "mountain", "sky"];
     var affirmations = {
-        "love": ["Placeholder for Affirmation"],
-        "abundance": ["Money comes to me easily"],
+        "love": ["I am worthy of love."],
+        "abundance": ["Money comes to me easily."],
         "success": [
-            "I am the Best",
-            "Everyday in every way I’m getting better and better",
-            "I am a success magnet"],
+            "I am the best.",
+            "Everyday in every way I’m getting better and better.",
+            "I am a success magnet."],
         "health": [
             "I am healthy, happy and radiant.",
             "I appreciate and love my body.",
             "I love feeling fit and strong.",
-            "I radiate good health.I am calm and at peace.",
+            "I radiate good health.",
+            "I am calm and at peace.",
             "I am focused and motivated.",
             "My sleep is relaxed and refreshing."],
         "happiness": [
-            "I am willing to be happy now",
-            "I accept that happiness is my true nature",
-            "I am worthy of feeling happy",
-            "My happiness comes from within me",
-            "I create my happiness by accepting every part of myself with unconditional love"
+            "I am willing to be happy now.",
+            "I accept that happiness is my true nature.",
+            "I am worthy of feeling happy.",
+            "My happiness comes from within me.",
+            "I create my happiness by accepting every part of myself with unconditional love."
         ],
     }
 
     $("#affirmation").append(getAffirmation());
 
     var imgAPIKey = "2zqKv7MR9dtqHfMPElu8Aw9R1CLfsfDYFTgvLB9itQQ";
+    var soundClientID = "wtFklhDugFYXRwpVpPlW";
+    var soundAPISecretKey = "VuSbiwN9SeJuIb5CJoCyDwHodnh6JUKojf3Vk6kD";
+    var soundURL = "https://freesound.org/apiv2/search/text/?query=piano&token=YOUR_API_KEY";
 
 
+    var count = 0;
     $("#pauseBtn").click(function () {
-        stopTimer();
-    });
-    $("#unpauseBtn").click(function () {
-        startTimer();
+        if (count % 2 == 0) {
+            stopTimer();
+            count++;
+        } else {
+            startTimer(timer);
+            count++;
+        }
     });
 
     function startTimer(duration) {
@@ -92,14 +100,37 @@ var timer = 0;
 
     function getAudio() {
         var theme = getTheme();
+        var themeToken = "ocean";
+        queryURL = "https://freesound.org/apiv2/search/text/?format=json&query=ocean&token=VuSbiwN9SeJuIb5CJoCyDwHodnh6JUKojf3Vk6kD"
         $.ajax({
             url: queryURL,
             method: "GET"
         }).then(function (response) {
-
-
-        });
+            var searchToken = response.results[0].id;
+            console.log(searchToken);
+            queryURL = "https://freesound.org/apiv2/sounds/" + searchToken + "/?format=json&token=VuSbiwN9SeJuIb5CJoCyDwHodnh6JUKojf3Vk6kD";
+            $.ajax({
+                url: queryURL,
+                method: "GET"
+            }).then(function (response) {
+                audioSource = response.previews["preview-lq-mp3"];
+                console.log(audioSource);
+                var audio = new Audio(audioSource);
+                var playPromise = audio.play();
+                playPromise.then(res=>{
+                    console.log("AUDIO SHOULD PLAY", res);
+                });
+            });
+        })
     }
+    getAudio();
+
+
+    function playAudio() {
+        var x = document.getElementById("audio");
+        x.play();
+    }
+    $(document).click(playAudio());
 
     function getImage() {
         var theme = getTheme();
