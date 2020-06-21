@@ -1,6 +1,7 @@
 var timer = 0;
     var timerID;
-    var length = localStorage.getItem("selectedTimeInSeconds") || 120; //one second timer, so 60 is 60 seconds
+//localStorage.getItem("selectedTimeInSeconds") || 
+    var length = 120; //one second timer, so 60 is 60 seconds
     startTimer(length);
 
     //affirmation display
