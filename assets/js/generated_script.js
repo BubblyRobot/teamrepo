@@ -130,7 +130,11 @@ var timer = 0;
         var x = document.getElementById("audio");
         x.play();
     }
-    $(document).click(playAudio());
+    $(document).ready(function () {
+        $(document).on("click",body,function() {
+            playAudio();
+        });
+    })
 
     function getImage() {
         var theme = getTheme();
