@@ -68,6 +68,7 @@ $("#getStarted").click(function () {
     transitionPages();
     $("#affirmation").text("");
     $("#affirmation").append(getAffirmation(affirmationToken));
+    $("#pauseBtn").addClass("fas fa-pause");
     getImage(themeToken);
     if (!($("#audioCheck").is(":checked"))){
         getAudio(themeToken);
@@ -87,9 +88,11 @@ $("#pauseBtn").click(function (event) {
     if (count % 2 == 0) {
         stopTimer();
         count++;
+        $("#pauseBtn").removeClass("fas fa-pause").addClass("fas fa-play");
     } else {
         startTimer();
         count++;
+        $("#pauseBtn").removeClass("fas fa-play").addClass("fas fa-pause");
     }
 });
 
