@@ -170,7 +170,7 @@ function getAudio(themeToken) {
 
 function getImage(searchToken) {
     queryURL = "https://api.unsplash.com/photos/random?query=";
-    queryURL = queryURL + searchToken + "&client_id=2zqKv7MR9dtqHfMPElu8Aw9R1CLfsfDYFTgvLB9itQQ&count=1";
+    queryURL = queryURL + searchToken + "&orientation=portrait&client_id=2zqKv7MR9dtqHfMPElu8Aw9R1CLfsfDYFTgvLB9itQQ&count=1";
     $.ajax({
         url: queryURL,
         method: "GET"
