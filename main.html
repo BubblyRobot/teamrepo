@@ -21,36 +21,13 @@
       </ul>
     </div>
   </div>
+  
   <content id="#page2Content">
 
     <div style="margin: auto; width: 400px" id="minutes">
       <label>How long would you like to meditate for? (in minutes)</label>
-      <input type="text" id="userLength">
+      <input type="text" id="userLength" value="2">
     </div>
-
-    <!-- <ul class="dropdown menu" id="themeSelection" data-dropdown-menu>
-      <li>
-        <a id="theme-selection" href="#">Themes</a>
-        <ul class="menu">
-          <li><a theme="desert" href="#">Desert</a></li>
-          <li><a theme="ocean" href="#">Ocean</a></li>
-          <li><a theme="forest" href="#">Forest</a></li>
-          <li><a theme="mountain" href="#">Mountain</a></li>
-          <li><a theme="sky" href="#">Sky</a></li>
-        </ul>
-      </li>
-
-      <li>
-        <a id="affirmation-selection" href="#">Read</a>
-        <ul class="menu">
-          <li><a affirmation="love" href="#">Love</a></li>
-          <li><a affirmation="abundance" href="#">Abundance</a></li>
-          <li><a affirmation="success" href="#">Success</a></li>
-          <li><a affirmation="health" href="#">Health</a></li>
-          <li><a affirmation="happiness" href="#">Happiness</a></li>
-        </ul>
-      </li>
-    </ul> -->
 
     <div style="margin: auto; width: 400px" id="themeAndAffirmationSelect">
       <label>Theme:</label>
@@ -73,7 +50,7 @@
 
       <div id="noAudio">
         <form action="">
-          <input type="checkbox" id="audio" name="audio" value="audio">
+          <input type="checkbox" id="audioCheck" name="audio" value="audio">
           <label for="Audio"> No Audio?</label>
           <br>
       </div>
@@ -89,8 +66,8 @@
         <span id="affirmation" style="color: white; text-shadow: 2px 2px black; font-size: 36px;"></span>
       </div>
       <div style="margin: auto; width: 50%;">
-        <button id="pauseBtn" style="text-shadow: 2px 2px white;  padding: 2px;"><i class="fas fa-pause"></i></button>
-        <button id="stopBtn" style="text-shadow: 2px 2px white;  padding: 2px;"><i class="fas fa-stop"></i></button>
+        <button type="button" id="pauseBtn" style="text-shadow: 2px 2px white;  padding: 2px;">Pause</button>
+        <button type="button" id="stopBtn" style="text-shadow: 2px 2px white;  padding: 2px;">Stop</button>
       </div>
       <audio id="audiotag1" src="https://freesound.org/data/previews/372/372181_6128004-lq.mp3"></audio>
     </div>

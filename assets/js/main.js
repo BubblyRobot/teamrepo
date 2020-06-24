@@ -2,33 +2,15 @@
     $(document).foundation();
 })();
 
-$("#generatedContent").hide();
-
-function transitionPages() {
-    $("#minutes, #noAudio, #startMenu, #themeAndAffirmationSelect").hide();
-    $("#generatedContent").show();
-}
-
-$("#getStarted").click(function () {
-    themeToken = $("#themeSelect").val();
-    affirmationToken = $("#affirmationSelect").val();
-    transitionPages();
-    $("#affirmation").append(getAffirmation(affirmationToken));
-    getImage(themeToken);
-    getAudio(themeToken);
-    var userLength = $("#userLength").val();
-    if (isNaN(parseInt(userLength))) {
-        //this should probably throw an error instead of defaulting to 2min
-        var length = 120;
-        startTimer(length);
-    } else {
-        var length = (parseInt(userLength) * 60);
-        startTimer(length);
-    }
-});
-
 var timer = 0;
 var timerID;
+
+var imgAPIKey = "2zqKv7MR9dtqHfMPElu8Aw9R1CLfsfDYFTgvLB9itQQ";
+var soundClientID = "wtFklhDugFYXRwpVpPlW";
+var soundAPISecretKey = "VuSbiwN9SeJuIb5CJoCyDwHodnh6JUKojf3Vk6kD";
+var soundURL = "https://freesound.org/apiv2/search/text/?query=piano&token=YOUR_API_KEY";
+var audio;
+
 var themes = ["desert", "ocean", "forest", "mountain", "sky"];
 var affirmations = {
     "love": ["I am worthy of love."],
@@ -54,41 +36,71 @@ var affirmations = {
     ],
 }
 
+$("#generatedContent").hide();
 
+function transitionPages() {
+    console.log("called");
+    if ($("#generatedContent").is(":visible")){
+        $("#minutes, #noAudio, #startMenu, #themeAndAffirmationSelect").show();
+        $("#generatedContent").hide();
+        $(document.body).css("background-image", "url(#)");
+        audio.stop();
+    } else {
+        $("#minutes, #noAudio, #startMenu, #themeAndAffirmationSelect").hide();
+        $("#generatedContent").show();
+    }
+}
 
-var imgAPIKey = "2zqKv7MR9dtqHfMPElu8Aw9R1CLfsfDYFTgvLB9itQQ";
-var soundClientID = "wtFklhDugFYXRwpVpPlW";
-var soundAPISecretKey = "VuSbiwN9SeJuIb5CJoCyDwHodnh6JUKojf3Vk6kD";
-var soundURL = "https://freesound.org/apiv2/search/text/?query=piano&token=YOUR_API_KEY";
+$("#getStarted").click(function () {
+    themeToken = $("#themeSelect").val();
+    affirmationToken = $("#affirmationSelect").val();
+    transitionPages();
+    $("#affirmation").append(getAffirmation(affirmationToken));
+    getImage(themeToken);
+    if (!($("#audioCheck").is(":checked"))){
+        getAudio(themeToken);
+    }
+    var userLength = $("#userLength").val();
+    timer = 120;
+    if (!(isNaN(parseInt(userLength)) || parseInt(userLength) <= 0)) {
+        //this should probably throw an error instead of defaulting to 2min
+        timer = (parseInt(userLength) * 60);
+    }
+    startTimer();
+});
 
 var count = 0;
-$("#pauseBtn").click(function () {
+$("#pauseBtn").click(function (event) {
+    event.stopPropagation();
     if (count % 2 == 0) {
         stopTimer();
         count++;
     } else {
-        startTimer(timer);
+        startTimer();
         count++;
     }
 });
 
-function startTimer(duration) {
-    if (duration <= 0) {
-        timer = 0;
-        stopTimer();
-    } else {
-        timer = duration;
+$("#stopBtn").click(function (event) {
+    event.stopPropagation();
+    stopTimer();
+    transitionPages();
+});
+
+function startTimer() {
+    console.log("start");
+    if (timer > 0) {
         timerID = setInterval(timerCountdown, 1000);
         timerDisplay();
     }
 }
 
 function stopTimer() {
+    console.log("stop");
     if (timerID) {
         clearInterval(timerID);
         timerID = null;
     }
-    timerDisplay();
 }
 
 //counts down timer
@@ -97,6 +109,7 @@ function timerCountdown() {
         timer--;
     } else {
         stopTimer();
+        transitionPages();
     }
     timerDisplay();
 }
@@ -130,15 +143,14 @@ function getAudio(themeToken) {
         method: "GET"
     }).then(function (response) {
         var searchToken = response.results[0].id;
-        console.log(searchToken);
         queryURL = "https://freesound.org/apiv2/sounds/" + searchToken + "/?format=json&token=VuSbiwN9SeJuIb5CJoCyDwHodnh6JUKojf3Vk6kD";
         $.ajax({
             url: queryURL,
             method: "GET"
         }).then(function (response) {
-            var x = document.createElement("AUDIO");
-            x.setAttribute("src", response.previews["preview-lq-mp3"]);
-            x.play();
+            audio = document.createElement("AUDIO");
+            audio.setAttribute("src", response.previews["preview-lq-mp3"]);
+            audio.play();
         });
     })
 }
@@ -151,7 +163,6 @@ function getImage(searchToken) {
         method: "GET"
     }).then(function (response) {
         var url = response[0].urls.regular;
-        console.log(url)
         $(document.body).css("background-image", "url(" + url + ")");
         $(document.body).css({ "height": "400px", "background-position": "center", "background-repeat": "no-repeat", "background-size": "cover" });
     });
