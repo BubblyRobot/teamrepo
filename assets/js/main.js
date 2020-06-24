@@ -13,12 +13,24 @@ var audio;
 
 var themes = ["desert", "ocean", "forest", "mountain", "sky"];
 var affirmations = {
-    "love": ["I am worthy of love."],
-    "abundance": ["Money comes to me easily."],
+    "love": [
+        "I am full of unconditional love.",
+        "I am surrounded by people who love me unconditionally.",
+        "I connect with others easily.",
+        "I open my heart to love and know that I deserve it.",
+        "Love surrounds me and everyone around me."],
+    "abundance": [
+        "Money comes to me easily.",
+        "I naturally attract good fortune.",
+        "I am open and receptive to all the wealth life offers me.",
+        "Wealth constantly flows into my life.",
+        "I am worthy of making more money."],
     "success": [
         "I am the best.",
         "Everyday in every way I’m getting better and better.",
-        "I am a success magnet."],
+        "I am a success magnet.",
+        "I have the knowledge to make smart decisions for myself.",
+        "I let go of any negative feelings about myself or my life, and accept all that is good."],
     "health": [
         "I am healthy, happy and radiant.",
         "I appreciate and love my body.",
@@ -44,7 +56,7 @@ function transitionPages() {
         $("#minutes, #noAudio, #startMenu, #themeAndAffirmationSelect").show();
         $("#generatedContent").hide();
         $(document.body).css("background-image", "url(#)");
-        audio.stop();
+        $("#audio").remove();
     } else {
         $("#minutes, #noAudio, #startMenu, #themeAndAffirmationSelect").hide();
         $("#generatedContent").show();
@@ -55,6 +67,7 @@ $("#getStarted").click(function () {
     themeToken = $("#themeSelect").val();
     affirmationToken = $("#affirmationSelect").val();
     transitionPages();
+    $("#affirmation").text("");
     $("#affirmation").append(getAffirmation(affirmationToken));
     getImage(themeToken);
     if (!($("#audioCheck").is(":checked"))){
