@@ -51,12 +51,11 @@ var affirmations = {
 $("#generatedContent").hide();
 
 function transitionPages() {
-    console.log("called");
     if ($("#generatedContent").is(":visible")){
         $("#minutes, #noAudio, #startMenu, #themeAndAffirmationSelect").show();
         $("#generatedContent").hide();
         $(document.body).css("background-image", "url(#)");
-        $("#audio").remove();
+        audio.pause();
     } else {
         $("#minutes, #noAudio, #startMenu, #themeAndAffirmationSelect").hide();
         $("#generatedContent").show();
@@ -101,7 +100,6 @@ $("#stopBtn").click(function (event) {
 });
 
 function startTimer() {
-    console.log("start");
     if (timer > 0) {
         timerID = setInterval(timerCountdown, 1000);
         timerDisplay();
@@ -109,7 +107,6 @@ function startTimer() {
 }
 
 function stopTimer() {
-    console.log("stop");
     if (timerID) {
         clearInterval(timerID);
         timerID = null;
