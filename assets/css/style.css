@@ -14,14 +14,27 @@ body{
     background-color:#F1FAEE;
     
 }
-#small{
+#siteByline{
+    /* display: inline-block; */
     font-size: 25%;
     color: #E63946;
+    padding-right: 25%;
+    
+    display: inline-block;
+}
+#small{
+ 
     /* padding-right: 30%; */
 }
 .menu-text{
     background-color: #F1FAEE;
     width: 100%;
+}
+.leftJust{
+    
+    font-size: 25%;
+    color: #E63946;
+    
 }
 
 content{
@@ -36,14 +49,14 @@ content{
     padding-left: 25%;
     padding-right: 10%;
     text-align: center;
-    padding-top: 5%;
+    padding-top: 3%;
  }
 
 #middle2{
     vertical-align: top;
     padding-left: 25%;
     padding-right:10%;
-    padding-top: 10%;
+    padding-top: 5%;
     text-align: center;
 }
 
