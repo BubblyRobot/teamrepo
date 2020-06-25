@@ -61,7 +61,6 @@ content{
 }
 
 
-
 h3{
     /* line-height: 50px; */
     text-align: center;
@@ -75,4 +74,11 @@ h3{
     font-size: 40px;
     /* font-family: 'Open Sans', sans-serif; */
     border-radius: 6px;
+}
+
+#affirmationAndButtons{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
