@@ -1,0 +1,84 @@
+html *{
+   font-family: 'Raleway', sans-serif;
+}
+
+body{
+    padding: 0;
+    background-color: #F1FAEE;
+    color: #1D3557;
+
+    background-repeat: no-repeat;
+    background-size: auto;
+
+}
+
+#siteTitle{
+    font-size: 50px;
+    padding: 10px;
+    background-color:#F1FAEE;
+    
+}
+#siteByline{
+    /* display: inline-block; */
+    font-size: 25%;
+    color: #E63946;
+    padding-right: 25%;
+    
+    display: inline-block;
+}
+#small{
+ 
+    /* padding-right: 30%; */
+}
+.menu-text{
+    background-color: #F1FAEE;
+    width: 100%;
+}
+.leftJust{
+    
+    font-size: 25%;
+    color: #E63946;
+    
+}
+
+content{
+    font-size: 20px;
+}
+
+#middle{
+    padding-left: 25%;
+    padding-right: 10%;
+    text-align: center;
+    padding-top: 3%;
+ }
+
+#middle2{
+    vertical-align: top;
+    padding-left: 25%;
+    padding-right:10%;
+    padding-top: 5%;
+    text-align: center;
+}
+
+
+h3{
+    /* line-height: 50px; */
+    text-align: center;
+}
+
+#getStarted{
+    height: 100px;
+    width: 400px;
+    background-color: #457B9D;
+    color: #F1FAEE;
+    font-size: 40px;
+    /* font-family: 'Open Sans', sans-serif; */
+    border-radius: 6px;
+}
+
+#affirmationAndButtons{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
