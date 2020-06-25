@@ -24,9 +24,5 @@ ShotGlass allows the user to tailor their own timed meditative experience by sel
 - Input form for user specific background information 
 - Weekly guided therapy sessions
 
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)
-
 - - -
 Copyright (c) 2020 ShotGlass Meditation. All Rights Reserved.
