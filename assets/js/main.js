@@ -177,6 +177,6 @@ function getImage(searchToken) {
     }).then(function (response) {
         var url = response[0].urls.regular;
         $(document.body).css("background-image", "url(" + url + ")");
-        $(document.body).css({ "height": "400px", "background-position": "center", "background-repeat": "no-repeat", "background-size": "cover" });
+        $(document.body).css({ "height": "100vh", "background-position": "center", "background-repeat": "no-repeat", "background-size": "cover" });
     });
 }
